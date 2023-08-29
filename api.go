@@ -540,6 +540,7 @@ func (adm AdminClient) newRequest(ctx context.Context, method string, reqData re
 	}
 
 	req = signer.SignV4(*req, accessKeyID, secretAccessKey, sessionToken, location)
+	fmt.Println("req", req)
 	return req, nil
 }
 
