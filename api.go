@@ -501,6 +501,8 @@ func (adm AdminClient) newRequest(ctx context.Context, method string, reqData re
 	fmt.Println("method", method)
 	fmt.Println("targetURL", targetURL)
 	fmt.Println("reqData.content", string(reqData.content))
+	decBytes, err := DecryptData(adm.getSecretKey(), bytes.NewReader(reqData.content))
+	fmt.Println("decBytes", string(decBytes))
 
 	// Initialize a new HTTP request for the method.
 	req, err = http.NewRequestWithContext(ctx, method, targetURL.String(), bytes.NewReader(reqData.content))
