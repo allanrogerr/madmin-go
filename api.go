@@ -500,7 +500,7 @@ func (adm AdminClient) newRequest(ctx context.Context, method string, reqData re
 	}
 	fmt.Println("method", method)
 	fmt.Println("targetURL", targetURL)
-	fmt.Println("reqData.content", reqData.content)
+	fmt.Println("reqData.content", string(reqData.content))
 
 	// Initialize a new HTTP request for the method.
 	req, err = http.NewRequestWithContext(ctx, method, targetURL.String(), bytes.NewReader(reqData.content))
