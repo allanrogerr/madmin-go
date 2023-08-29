@@ -498,6 +498,9 @@ func (adm AdminClient) newRequest(ctx context.Context, method string, reqData re
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("method", method)
+	fmt.Println("targetURL", targetURL)
+	fmt.Println("reqData.content", reqData.content)
 
 	// Initialize a new HTTP request for the method.
 	req, err = http.NewRequestWithContext(ctx, method, targetURL.String(), bytes.NewReader(reqData.content))
@@ -515,6 +518,9 @@ func (adm AdminClient) newRequest(ctx context.Context, method string, reqData re
 		secretAccessKey = value.SecretAccessKey
 		sessionToken    = value.SessionToken
 	)
+	fmt.Println("accessKeyID", accessKeyID)
+	fmt.Println("secretAccessKey", secretAccessKey)
+	fmt.Println("sessionToken", sessionToken)
 
 	adm.setUserAgent(req)
 	for k, v := range reqData.customHeaders {
